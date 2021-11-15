@@ -282,6 +282,9 @@ TSWLatexianTemp*
 # xwatermark package
 *.xwm
 
+# python scripts
+*.py
+
 # directories
 /arxiv
 /references
