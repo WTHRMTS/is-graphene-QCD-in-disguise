@@ -1,0 +1,164 @@
+\documentclass[prb,showpacs,superscriptaddress,titlepage,amsmath,amssymb,twocolumn]{revtex4-1}
+
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{hyperref}
+\usepackage{epstopdf}
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{color}
+
+%\hyphenation{op-tical net-works semi-conduc-tor}  % sets preferred placement for hyphens in certain words
+
+%\graphicspath{{Figures/}}  % relative path to (all) figures from the location of the .tex file
+\begin{document}
+
+\title{
+Supporting Information for A Hybrid GW/Bloch Equation Approach for accurate and efficient calculation of optical properties of Excitonic Materials
+}
+\author{J.~M.~Booth}
+\email{jamie.booth@rmit.edu.au}
+\affiliation{ARC Centre of Excellence in Exciton Science, RMIT University, Melbourne, Australia}
+
+\author{M.~Klymenko}
+
+\affiliation{ARC Centre of Excellence in Exciton Science, RMIT University, Melbourne, Australia}
+
+\author{J.~Cole}
+
+\affiliation{ARC Centre of Excellence in Exciton Science, RMIT University, Melbourne, Australia}
+
+\author{S.~P.~Russo}
+\affiliation{ARC Centre of Excellence in Exciton Science, RMIT University, Melbourne, Australia}
+
+\date{\today}
+
+%\pagebreak
+%\begin{abstract}
+
+%\end{abstract}
+
+\maketitle
+\textbf{Outline}
+The key to the calculation of the optical properties of materials is the macroscopic dielectric tensor, which is obtained from the Coulomb Interaction and the irreducible polarizability.
+
+The three methods used in this study, TDDFT, SBE and BSE can all be used to determine this via equations which take a rather similar form in each case.
+
+The biggest difference is the computation of the interactions between the electrons and holes. In SBE we used an analytic form of the interaction screened with a static dielectric constant independent of wavevector. In TDDFT the interaction is given by the exchange correlation kernel, while in BSE the full screened coulomb interaction is calculated in the Random Phase Approximation, however dynamical effects are excluded (static screening) as they tend to cancel out.
+
+Figure 2 presents a comparison of the electronic band structures and Densities of States (DOSs) calculated by DFT (gray lines), and the GW Approximation (black circles, fitted with blue lines in the band structure, blue line and fill in the DOS). The data reveals that as expected, the band dispersions are highly anisotropic. The valence band dispersions in the $\Gamma \rightarrow Y$ and $\Gamma \rightarrow Z$ directions are extremely flat, and the corresponding conduction band dispersions echo this trend. The conduction bands exhibit significant dispersion in the other directions plotted, indicating a pseudo one-dimensional electronic structure.
+
+
+\begin{figure*}[!t]
+    \centering
+    \includegraphics[width=0.9\linewidth]{bisbr_bs.pdf}
+    \caption{GW bandstructure (black circles fitted with blue cubic splines) and DFT bandstructure (gray lines) of BiSBr. Both calculations include spin-orbit coupling.}
+    \label{fig:bs}
+\end{figure*}
+
+The comparison also indicates that the dispersions of the DFT and GW band structures differ very little. The different approach to screening implemented in the GW approximation results in an approximately rigid shift of the conduction bands of approx. 1.0 eV, resulting in a band gap of 2.377 eV as opposed to the DFT gap of 1.36 eV. The densities of states also suggest a rigid shift as the curves appear very similar apart from the aforementioned gap.
+
+These two values appear to roughly straddle the experimental optical gap of 1.97 eV. While it is not expected that DFT will accurately reproduce the band gap due to the well-known shortcomings of its local approach to electron exchange-correlation, the GW calculation appears to overshoot the experimental value by approx. 400 meV (2.377 eV vs 1.97 eV), a considerable difference. There are two possible reasons for this. The first is that even the GW approximation, with its more sophisticated non-local approach to exchange-correlation, is missing something and over-stating the band gap. The second reason is that the GW approximation is getting the band gap right, but the band gap and optical gaps do not coincide. That is, once interactions between two quasiparticles are included, such as excited electrons and the residual hole, that large excitonic stabilization may result and pull the edge of the optical gap down to much lower energy.
+
+The reason for such a discrepancy between the GW band gap and the experimental optical gap may be the same explanation as the discrepancy between the DFT and GW bands gaps: the screening. The fact that the GW approximation produces a band gap approx. 1.0 eV above the DFT gap suggests that DFT is overestimating the screening, and that the electrons are interacting much more strongly than DFT indicates. This reduction in screening in the GW calculations will result in conduction electrons interacting more strongly with the valence band, thus increasing their energies. However it will also result in a stronger interaction between conduction electrons and valence band holes, thus giving more stable bound states: excitons. Figure 3 presents some support for the first hypothesis. It compares the band gaps of the GW data with a hybrid DFT calculation using the HSE06 functional, and with the experimental optical gap. It is obvious that while the GW band gap is considerable larger than the optical gap, good agreement is observed between the HSE06 band gap and the experimental value. Therefore if in the real material the optical and band gaps coincide, then the HSE06 data may well be the best match.
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.9\linewidth]{dos.pdf}
+    \caption{ Total densities of states of the GW data, and the DFT data in which the conduction bands are shifted to coincide with the GW data, and finally a hybrid DFT calculation using the HSE06 functional. The shift applied to the DFT data is then used as a scissor operator in Time-Dependent DFT calculations. The experimental optical gap is indicated by a red semicircle.}
+    \label{fig:bs}
+\end{figure}
+
+
+However, the one-dimensional nature of the crystal structure, specifically the pseudo one-dimensional zig-zag Bi chains suggests that the electronic structure of BiSBr will be similarly one-dimensional, and thus considerable confinement of excitons may occur, promoting their stabilization. Thus from a theory perspective, the HSE06 data would seem to be a coincidence. To test this, we performed Time-Dependent DFT (TDDFT) calculations and compared them with Bethe-Salpeter calculations of the optical properties. Both the TDDFT and the BSE calculations went beyond the Tamm-Dancoff approximation by including anti-resonant terms in the calculations. The TDDFT calculations were performed with both plain DFT and Hybrid data as input, and in addition a scissor operator was applied to the DFT data to align the band gap with the GW data, and TDDFT was performed using this input. Figure 3 shows the comparison between the GW data and the DFT with a scissor operator applied.
+
+\begin{figure}[!t]
+    \centering
+    \subfigure[]{\includegraphics[width=0.45\linewidth]{dos1.pdf}}
+    \subfigure[]{\includegraphics[width=0.45\linewidth]{dos2.pdf}}
+    \subfigure[]{\includegraphics[width=0.45\linewidth]{dos3.pdf}}
+    \subfigure[]{\includegraphics[width=0.45\linewidth]{dos4.pdf}}
+    \caption{a) TDDFT data using plain GGA DFT as input, comparing the imaginary part of the dielectric function, the optical transitions and the GW DOS. b) same as a) but for the DFT+Scissor operator data, c) TDDFT of the HSE06 data and d) BSE data. The optical transition oscillator strengths have been arbitrarily shifted to provide a clearer comparison of the relative peak heights and the dielectric response.}
+    \label{fig:bs}
+\end{figure}
+
+ Figure 4 illustrates the results of the TDDFT and BSE calculations. Each figure compares the imaginary part of the dielectric function (roughly equivalent to absorption), with the corresponding optical transitions and their strength as functions of energy. The GW density of states is included in each figure for reference. From Figure 4a we see that, as expected TDDFT on plain DFT input results in optical properties that manifest at far lower energy than either the GW band gap, or the experimental optical gap.
+ 
+\begin{figure}[!t]
+    \centering
+    \subfigure[]{\includegraphics[width=0.45\linewidth]{dos_5.pdf}}
+    \subfigure[]{\includegraphics[width=0.45\linewidth]{dos_6.pdf}}
+    \caption{a) Comparison of the calculated optical absorption data for the DFT, TDDFT and BSE approaches, b) comparison of the BSE approach with TDDFT data using the DSFT+Scissor data, and hybrid functional (HSE06) data as input. }
+    \label{fig:bs}
+\end{figure}
+
+Shifting the DFT conduction bands by applying a scissor operator gives the data of Figure 4b. From this we see that while the scissor operator shifts the conduction band to higher energy, TDDFT, which uses GGA DFT screening, does not result in a stabilization of the optical absorption. The $\varepsilon^2(\omega)$ data and optical transitions coincide with the GW gap, which is the DFT+scissor gap. This data suggests that lower screening of the DFT approach compared with GW screening, proof of which is found in the difference between the GW and DFT band gaps, results in a small interaction between electrons and holes.
+
+The biggest surprise is the Hybrid+TDDFT data of Figure 4c. While the increase in the band gap using the hybrid functional over the DFT calculation (see Figure 3) suggests that the HSE06 functional gives smaller Coulomb screening, which in turn should result in larger excitonic stabilization with respect to the DFT+Scissor approach, the calculated optical transitions occur well above the computed band gap. This is somewhat paradoxical.
+
+The BSE data on the other hand, despite taking the GW data as input, which exhibited a much larger band gap than even the hybrid data, shows a shift in the optical transitions to lower energy even in comparison to the Hybrid TDDFT data. To determine the effects of the different screening approaches to the optical data that one might measure, Figure 5 plots the absorption spectra as functions of energy calculated from the dielectric functions. Figure 5a compares DFT, TDDFT and BSE data, and shows that compared to the DFT approaches, the BSE data shows a considerable shift of the absorption edge to higher energy.
+
+Comparing the BSE absorption to the DFT+Scissor and Hybrid TDDFT data however shows the opposite trend. The absorption edges for the DFT+Scissor and Hybrid data are both shallower in gradient and shifted to higher energy compared to the BSE data. Thus, summarizing this, the over-estimation of screening by DFT results in an optical absorption spectrum which is much lower in energy than experiment. Naively increasing the splitting between the valence and conduction bands by i) applying a scissor operator and ii) using a hybrid functional approach to calculate the bandstructure broadens the optical gaps but does not necessarily result in good agreement with the experimental data.
+
+Figure 6 and Figure 7 illustrate this more clearly. Figure 6 shows a simulated Tauc plot, of the kind from which the experimental optical gap was determined, for the BSE data compared with the experimental value. It is obvious that the x-intercept of the fitted line is very close to that of experimental value. In fact, the BSE approach gives a value for the optical gap which is within 2 \% of experiment. Figure 7a shows data derived via the Tauc method for the bare TDDFT, TDDFT+Scissor, Hybrid+TDDFT and BSE approaches in comparison to the experimental data. As expected the bare TDDFT and the TDDFT+Scissor method do not accurately reproduce the experimental optical gap, while the hybrid approach produces an optical gap which is very close to experiment, and the BSE value.
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.9\linewidth]{dos_7.pdf}
+    \caption{ Simulated Tauc plot and linear fit for the BSE-generated data. The fit gives an optical gap of approx. 1.97 eV. The experimental gap of 2.01 eV is indicated by the red semi-circle.}
+    \label{fig:bs}
+\end{figure}
+
+ However, Figure 7b shows that while the value of the gaps produced by the BSE and hybrid+TDDFT approaches may be similar the optical properties are anything but. This figure plots the exciton binding energy (the difference between the band gap and the optical gap) for the BSE, hybrid+TDDFT, TDDFT+Scissor and bare TDDFT approaches. We see that while the optical gaps of the BSE and hybrid+TDDFT approaches are similar, the exciton binding energies are wildly different. The BSE binding energy is approx. 400 meV, while the hybrid TDDFT value is small (approx. 50 meV) and negative. Even the TDDFT+Scissor and bare TDDFT approaches predict a reasonably significant exciton stabilization (approx. 190 meV and 110 meV respectively).
+
+The data from the hybrid functional approach is thus contradictory, and hard to reconcile. If the inclusion of bare Hartree-Fock interactions which replace some of the over-screened DFT exchange-correlation increase the electron-electron interactions, resulting in a larger band gap, then this would also be expected to result in an increase in the electron-hole interactions, which would stabilize excitons. This is obviously not the case.
+
+
+\begin{figure}[!t]
+    \centering
+    \subfigure[]{\includegraphics[width=0.45\linewidth]{bar1.pdf}}
+    \subfigure[]{\includegraphics[width=0.45\linewidth]{bar2.pdf}}
+    \caption{ a) Optical gaps determined from simulated Tauc plots from the different computational approaches, the experimental value is also indicated by the dashed line to guide the eye, b) Calculated exciton binding energy from the different computational approaches.}
+    \label{fig:bs}
+\end{figure}
+
+
+This \textit{is} however the case with the GW/BSE data. The GW band gap is significantly larger than the DFT gap and even the hybrid functional gap, due to the more sophisticated approach to screening resulting in stronger interactions between conduction and valence band electrons. However, this concurrently increases the interactions between the conduction electrons and holes, resulting in a larger attractive interaction and therefore a far greater exciton binding energy. In fact, the calculated binding energy is both large (approx. 400 meV), and results in the shifting of the optical absorption edge down such that the BSE data agrees with the experimental optical gap to an extremely good precision ($> 2 \%$).
+
+
+\begin{figure}[!t]
+    \centering
+     \subfigure[]{\includegraphics[width=0.45\linewidth]{bs1.pdf}}
+     \subfigure[]{\includegraphics[width=0.45\linewidth]{bs2.pdf}}
+     \subfigure[]{\includegraphics[width=0.45\linewidth]{bs3.pdf}}
+     \subfigure[]{\includegraphics[width=0.45\linewidth]{bs4.pdf}}
+    \caption{Contour plots of a) the highest energy valence band in the $\mathbf{k}_{xy}$ plane, b) the highest energy valence band in the $\mathbf{k}_{yz}$ plane, c) the lowest energy conduction band in the $\mathbf{k}_{xy}$ plane and d) the lowest energy conduction band in the $\mathbf{k}_{yz}$ plane}
+    \label{fig:bs}
+\end{figure}
+
+Thus, we see that many-body and many-quasiparticle effects are of extreme importance in the optical properties of BiSBr. Without including non-local electronic interactions the predicted band and optical gaps are differ considerably from experiment. However, including these at the GW level still does not accurately reflect the optical energy gap. Only by using sophisticated and computationally intensive BSE calculations on top of the GW electronic structure can the theory be brought in line with experiment.
+
+Figure 8 suggests a reason for this discrepancy. It compares contour plots of the highest energy valence and lowest energy conduction bands in the $\mathbf{k}_{xy}$ and $\mathbf{k}_{yz}$ planes. The valence band exhibits a pronounced saddle at the $\Gamma$-point, and the dispersion is sharply peaked in the $\mathbf{k}_{x}$ and $\mathbf{k}_{z}$ directions. The conduction band exhibits similar behaviour, however the dispersion is even narrower, indicating that electrons excited to the conduction band will be confined to a narrow range of k-values, effectively in the $\mathbf{k}_{x}$ and $\mathbf{k}_{z}$ directions.
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.9\linewidth]{eps.pdf}
+    \caption{Figure 9: Imaginary parts of the dielectric tensor calculated using the BSE approach resolved along the x,y and z axes }
+    \label{fig:bs}
+\end{figure}
+
+Figure 9 provides support for this hypothesis in the form of the imaginary part of the BSE dielectric tensor resolved along the x, y and z axes. It shows that the y-axis component of the imaginary part of the dielectric function dominates the optical response at low energies. Combined with the valence band data, this suggests that excitons in BiSBr will be confined to a narrow region in k-space, which results in a much stronger Coulomb interaction in the bound electron-hole state, as in momentum space this follows an inverse-square law. This stronger interaction renders them far more stable than excitons in more isotropic electronic landscapes, however in turn it requires a proper non-local calculation of the Coulomb interaction to reproduce this stability, such as that used in BSE calculations.
+
+Figure 10: Comparison of the Bethe-Salpeter generated absorption spectrum (black with gray fill), and the Semiconductor Bloch equation approach with (blue) and without (orange) Coulomb effects.
+
+{\color{red} The comparison of the results obtained by the model based on the semiconductor Bloch equations and BSE shows good agreement. A small discrepancy at smaller energies is caused by the angular averaging. In Fig. XX we shows results with and without Coulomb coupling that enlighten importance of the excitonic effects on the absorption spectra and evidence large exciton binding energy (0.619 eV).
+
+It is also interesting to compare the semiconductor Bloch equation derived with and without short wavelength contribution to the Coulomb potential beyond the first Brillouin zone (see Appendix A for more details). Comparison to the SBE results confirms the important role of the short-wavelength components in the Coulomb coupling that is an evidence that electron and hole constituting the exciton are partially localized within the primitive cell of the BiSBr crystal.}
+
+
+\bibliographystyle{apsrev4-1}
+\bibliography{bib}
+
+
+\end{document}
